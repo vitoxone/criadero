@@ -1,0 +1,27 @@
+<h1>Tipos</h1>
+
+<?php $this->Html->addCrumb('Tipos'); ?>
+
+<br />
+
+<table class="table-striped table-bordered table-condensed table-hover">
+	<tr>
+		<th>Nombre</th>
+	</tr>
+	<?php foreach ($types as $type): ?>
+	<tr>
+		<td><?php echo $this->Html->link($type['Type']['name'], array('action' => 'view', $type['Type']['id'])); ?></td>
+	</tr>
+	<?php endforeach; ?>
+</table>
+
+<br />
+<br />
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('New Type'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Horses'), array('controller' => 'horses', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Horse'), array('controller' => 'horses', 'action' => 'add')); ?> </li>
+	</ul>
+</div>

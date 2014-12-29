@@ -1,0 +1,159 @@
+<?php echo $this->Html->css(array('bootstrap-editable.css', '/select2/select2.css'), 'stylesheet', array('inline' => false)); ?>
+<?php echo $this->Html->script(array('bootstrap-editable.js', '/select2/select2.js'), array('inline' => false)); ?>
+
+
+<!-- Datatable -->
+	<link href="/criadero/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default">
+  <?php echo $this->Html->link(__('Imágenes'), array('action' => 'index')); ?>
+   </button>
+
+   <button type="button" class="btn btn-selected">
+   	Listado
+   </button>
+</div>
+
+<br />
+<br />
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default">
+   <?php echo $this->Html->link(__('Agregar Caballo'), array('action' => 'add')); ?>
+   </button>
+
+</div>
+<br />
+<br />
+
+<table class="table-striped table-bordered table-condensed table-hover">
+	<tr>
+		<th><?php echo $this->Paginator->sort('Imagen'); ?></th>
+		<th><?php echo $this->Paginator->sort('N° Registro'); ?></th>
+		<th><?php echo $this->Paginator->sort('Nombre'); ?></th>
+		<th><?php echo $this->Paginator->sort('Fecha Nacimiento'); ?></th>
+		<th><?php echo $this->Paginator->sort('Género'); ?></th>
+		<th><?php echo $this->Paginator->sort('Raza'); ?></th>
+		<th><?php echo $this->Paginator->sort('Tipo'); ?></th>
+		<th><?php echo $this->Paginator->sort('Color'); ?></th>
+		<th><?php echo $this->Paginator->sort('Estado'); ?></th>
+		<th><?php echo $this->Paginator->sort('Último Paseo'); ?></th>
+		<th><?php echo $this->Paginator->sort('Pasear'); ?></th>
+		<th class="actions">#</th>
+	</tr>
+	<?php foreach ($horses as $horse): ?>
+	<tr>
+		<td><?php echo $this->Html->Image('/images/small/' . $horse['Horse']['image'], array('width' => 100, 'height' => 100, 'alt' => $horse['Horse']['image'], 'class' => 'image')); ?></td>
+		<td><span class="category"><?php echo $horse['Horse']['number']; ?></span></td>
+		<td><span class="brand"><?php echo $horse['Horse']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Horse']['birthdate']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Gender']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Breed']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Type']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Color']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['State']['name']; ?></span></td>
+		<td><span class="name"><?php echo $horse['Horse']['last_walk']; ?></span></td>
+		  <?php 
+
+
+$newdate = strtotime ( '+2 day' , strtotime ( $horse['Horse']['last_walk'] ) ) ;
+        echo ($newdate);
+
+         if($newdate < date('Y-m-d') ){
+
+        echo ($horse['Horse']['last_walk']);
+    }
+         	?>
+
+
+		<td><div class="btn-group">
+  
+
+   <?php 
+
+         if($horse['Horse']['last_walk'] +2 < date('Y-m-d') ){	?>
+         	<button class="btn btn-success ">
+          		<?php echo $this->Html->link(__('_____'), array('action' => 'add')); 
+
+      		}
+      		else ?>
+      		</button>
+      		<button class="btn btn-danger">
+      			 <?php echo $this->Html->link(__('_____'), array('action' => 'add')); ?>
+   
+   			</button>
+
+</div></td>
+
+		<td class="actions" >
+			 <?php echo $this->Html->link(__('Ver'),'/horses/view/'.$horse['Horse']['id'] ,array('class' => 'btn btn-success')); ?> 
+            <?php echo $this->Html->link(__('Editar'),'/horses/edit/'.$horse['Horse']['id'] ,array('class' => 'btn btn-success')); ?> 
+				<?php echo $this->Form->postLink(__('Borrar') , array('action' => 'delete', $horse['Horse']['id']), null, __('Are you sure you want to delete # %s?', $horse['Horse']['id'])); ?>
+				</td>
+	</tr>
+	<?php endforeach; ?>
+</table>
+
+
+
+<br />
+
+<?php echo $this->element('pagination-counter'); ?>
+
+<?php echo $this->element('pagination'); ?>
+
+
+<div class="panel panel-default table-responsive">
+					<div class="panel-heading">
+						Data Table
+						<span class="label label-info pull-right">790 Items</span>
+					</div>
+					<div class="padding-md clearfix">
+						<table class="table table-striped" id="dataTable">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Email</th>
+									<th>Roles</th>
+									<th>Rut</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($horses as $horse): ?>
+								<tr>
+									<td width="50px"><?php echo h($horse['Horse']['name']); ?>&nbsp;</td>
+									<td><?php echo h($horse['Horse']['number']); ?>&nbsp;</td>
+									<td><?php echo h($horse['Horse']['birthdate']); ?>&nbsp;</td>
+									<td><?php echo h($horse['Gender']['name']); ?>&nbsp;</td>
+									<td><?php echo h($horse['Type']['name']); ?>&nbsp;</td>
+									<td><?php echo h($horse['Color']['name']); ?>&nbsp;</td>
+									<td><?php echo h($horse['State']['name']); ?>&nbsp;</td>
+								
+								<td class="actions" >
+			 <?php echo $this->Html->link(__('Ver'),'/horses/view/'.$horse['Horse']['id'] ,array('class' => 'btn btn-success')); ?> 
+            <?php echo $this->Html->link(__('Editar'),'/horses/edit/'.$horse['Horse']['id'] ,array('class' => 'btn btn-success')); ?> 
+				<?php echo $this->Form->postLink(__('Borrar') , array('action' => 'delete', $horse['Horse']['id']), null, __('Are you sure you want to delete # %s?', $horse['Horse']['id'])); ?>
+				</td>
+					
+				<?php endforeach; ?>
+								</tr>
+							</tbody>
+						</table>
+					</div><!-- /.padding-md -->
+					
+				</div><!-- /panel -->
+<br />
+<br />
+
+<h3>Actions</h3>
+
+<?php echo $this->Html->link('New Product', array('action' => 'add'), array('class' => 'btn btn-default')); ?>
+
+<br />
+<br />

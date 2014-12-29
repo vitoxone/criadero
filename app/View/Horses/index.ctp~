@@ -1,0 +1,13 @@
+<h1><?php echo Configure::read('Settings.SHOP_TITLE'); ?></h1>
+
+<br />
+
+<?php echo $this->element('products'); ?>
+
+
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('New Horse'), array('action' => 'add')); ?></li>
+	</ul>
+</div>

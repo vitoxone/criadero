@@ -1,0 +1,63 @@
+
+
+<?php
+$this->Html->addCrumb($horse['Breed']['name'], array('controller' => 'breeds', 'action' => 'view', $horse['Breed']['id']));
+$this->Html->addCrumb($horse['Type']['name'], array('controller' => 'types', 'action' => 'view', $horse['Type']['id']));
+$this->Html->addCrumb($horse['Horse']['name']);
+?>
+
+
+<h1><?php echo $horse['Horse']['name']; ?></h1>
+
+<div class="row">
+
+	<div class="col col-sm-7">
+	<?php echo $this->Html->Image('/images/large/' . $horse['Horse']['image'], array('alt' => $horse['Horse']['name'], 'class' => 'img-thumbnail img-responsive')); ?>
+	</div>
+
+	<div class="col col-sm-5">
+
+		<h3><?php echo $horse['Horse']['name']; ?></h3>
+
+		<br />
+		<br />
+
+		<span id="productprice"><?php echo $horse['State']['name']; ?></span>
+
+		<br />
+		<br />
+
+		<br />
+		<br />
+
+		<strong>Número Inscripción:</strong> <?php echo $horse['Horse']['number']; ?>
+		<br />
+		<br />
+                <strong>Fecha Nacimiento:</strong> <?php echo $horse['Horse']['birthdate']; ?>
+		<br />
+		<br />
+
+		<strong>Género:</strong> <?php echo $this->Html->link($horse['Gender']['name'], array('controller' => 'genders', 'action' => 'view',$horse['Gender']['id'])); ?>
+
+		<br />
+		<br />
+
+                <strong>Raza:</strong> <?php echo $this->Html->link($horse['Breed']['name'], array('controller' => 'breeds', 'action' => 'view',$horse['Breed']['id'])); ?>
+                <br />
+		<br />
+
+		 <strong>Tipo:</strong> <?php echo $this->Html->link($horse['Type']['name'], array('controller' => 'types', 'action' => 'view',$horse['Type']['id'])); ?>
+                <br />
+		<br />
+
+		 <strong>Color:</strong> <?php echo $this->Html->link($horse['Color']['name'], array('controller' => 'colors', 'action' => 'view',$horse['Color']['id'])); ?>
+                <br />
+		<br />
+
+		<strong>Estado:</strong> <?php echo $this->Html->link($horse['State']['name'], array('controller' => 'states', 'action' => 'view',$horse['State']['id'])); ?>
+                <br />
+		<br />
+
+	</div>
+
+</div>

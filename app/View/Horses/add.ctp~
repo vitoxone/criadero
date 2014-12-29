@@ -1,0 +1,106 @@
+<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+  <script>
+  $(function() {
+   //$( '#datepicker' ).datepicker();
+    $( '#birthdate' ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  // $( "#datepicker" ).datepicker( "option", "showAnim", "slide" );
+  });
+  </script>
+
+<h2>Agregar Caballo</h2>
+<hr align="left" noshade="noshade" size="4" width="75%" />
+<br />
+
+<div class="row">
+<div class="col-sm-4">
+<h4><?php echo __('Información Básica'); ?></h4>
+<?php echo $this->Form->create('Horse'); ?>
+<br />
+<?php echo $this->Form->input('name', array('class' => 'form-control', 'label'=>'Nombre')); ?>
+<br />
+<?php echo $this->Form->input('number', array('class' => 'form-control', 'label'=>'Número Inscripción')); ?>
+<br />
+<?php echo $this->Form->input('birthdate', array( 'id' =>'birthdate', 'class' => 'form-control', 'label'=>'Fecha Nacimiento')); ?>
+<br />
+<?php echo $this->Form->input('gender_id', array('class' => 'form-control', 'label'=>'Género')); ?>
+<br />
+<?php echo $this->Form->input('breed_id', array('class' => 'form-control','label'=>'Raza')); ?>
+<br />
+<?php echo $this->Form->input('type_id', array('class' => 'form-control', 'label'=>'Tipo')); ?>
+<br />
+<?php echo $this->Form->input('color_id', array('class' => 'form-control', 'label'=>'Color')); ?>
+<br />
+<?php echo $this->Form->input('state_id', array('class' => 'form-control', 'label'=>'Estado')); ?>
+<br />
+<?php echo $this->Form->input('image', array('class' => 'form-control', 'label'=>'Imagen')); ?>
+<br />
+<?php echo $this->Form->input('description', array('class' => 'form-control', 'label'=>'Descripción')); ?>
+<br />
+<h4><?php echo __('Información Adicional'); ?></h4>
+<?php echo $this->Form->input('lft', array('class' => 'form-control', 'label'=>'Padre','empty' => true)); ?>
+<br />
+<?php echo $this->Form->input('rght', array('class' => 'form-control', 'label'=>'Madre', 'empty' => true)); ?>
+<br />
+
+<br />
+<?php echo $this->Form->button('Submit', array('class' => 'btn btn-primary')); ?>
+<?php echo $this->Form->end(); ?>
+
+<br />
+<br />
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horses form">
+<?php echo $this->Form->create('Horse'); ?>
+	<fieldset>
+		<legend><?php echo __('Add Horse'); ?></legend>
+	<?php
+		echo $this->Form->input('name');
+		echo $this->Form->input('number');
+		echo $this->Form->input('birthdate');
+		echo $this->Form->input('gender_id');
+		echo $this->Form->input('breed_id');
+		echo $this->Form->input('type_id');
+		echo $this->Form->input('color_id');
+		echo $this->Form->input('state_id');
+		echo $this->Form->input('description');
+		echo $this->Form->input('image');
+		echo $this->Form->input('lft');
+		echo $this->Form->input('rght');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+
+		<li><?php echo $this->Html->link(__('List Horses'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Genders'), array('controller' => 'genders', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Gender'), array('controller' => 'genders', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Breeds'), array('controller' => 'breeds', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Breed'), array('controller' => 'breeds', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Types'), array('controller' => 'types', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Type'), array('controller' => 'types', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Colors'), array('controller' => 'colors', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Color'), array('controller' => 'colors', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List States'), array('controller' => 'states', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New State'), array('controller' => 'states', 'action' => 'add')); ?> </li>
+	</ul>
+</div>
